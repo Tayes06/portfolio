@@ -2,9 +2,10 @@ import asyncio
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
+from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 from app.config import settings
 from app.database import init_db, engine
@@ -40,7 +41,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+jinja_env = Environment(
+    loader=FileSystemLoader(str(BASE_DIR / "templates")),
+    autoescape=True,
+    cache_size=0,
+)
 
 
 def render(name: str, request: Request, context: dict | None = None):
@@ -54,7 +59,9 @@ def render(name: str, request: Request, context: dict | None = None):
     }
     if context:
         ctx.update(context)
-    return templates.TemplateResponse(name, ctx)
+    template = jinja_env.get_template(name)
+    content = template.render(ctx)
+    return HTMLResponse(content)
 
 
 # Share the configured templates and render helper with route modules
