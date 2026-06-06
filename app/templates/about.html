@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}{{ t('about.title') }} — {{ t('site.author') }}{% endblock %}
+{% block content %}
+<div class="max-w-4xl">
+  <h1 class="text-4xl font-bold text-white mb-2">{{ t('about.title') }}</h1>
+  <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-8"></div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <!-- Bio -->
+    <div class="md:col-span-2 space-y-6">
+      <p class="text-gray-300 leading-relaxed text-lg">
+        {{ t('about.bio1') }}
+      </p>
+      <p class="text-gray-400 leading-relaxed">
+        {{ t('about.bio2') }}
+      </p>
+      <p class="text-gray-400 leading-relaxed">
+        {{ t('about.bio3') }}
+      </p>
+
+      <!-- Experience -->
+      <div class="pt-6">
+        <h3 class="text-xl font-semibold text-white mb-4">{{ t('about.experience') }}</h3>
+        <div class="space-y-4">
+          <div class="border-l-2 border-blue-500 pl-4">
+            <h4 class="text-white font-medium">{{ t('about.exp1_title') }}</h4>
+            <p class="text-sm text-gray-400">{{ t('about.exp1_company') }}</p>
+            <p class="text-sm text-gray-500 mt-1">{{ t('about.exp1_desc') }}</p>
+          </div>
+          <div class="border-l-2 border-purple-500 pl-4">
+            <h4 class="text-white font-medium">{{ t('about.exp2_title') }}</h4>
+            <p class="text-sm text-gray-400">{{ t('about.exp2_company') }}</p>
+            <p class="text-sm text-gray-500 mt-1">{{ t('about.exp2_desc') }}</p>
+          </div>
+          <div class="border-l-2 border-green-500 pl-4">
+            <h4 class="text-white font-medium">{{ t('about.exp3_title') }}</h4>
+            <p class="text-sm text-gray-400">{{ t('about.exp3_company') }}</p>
+            <p class="text-sm text-gray-500 mt-1">{{ t('about.exp3_desc') }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="pt-4">
+        <h3 class="text-xl font-semibold text-white mb-4">{{ t('about.education') }}</h3>
+        <div class="border-l-2 border-gray-600 pl-4">
+          <h4 class="text-white font-medium">{{ t('about.education_title_1') }}</h4>
+          <p class="text-sm text-gray-400">{{ t('about.education_school_lut_1') }}</p>
+        </div><br>
+        <div class="border-l-2 border-gray-600 pl-4">
+          <h4 class="text-white font-medium">{{ t('about.education_title_2') }}</h4>
+          <p class="text-sm text-gray-400">{{ t('about.education_school_lut_2') }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side info -->
+    <div class="space-y-6">
+      <!-- CV card -->  
+      <div class="p-6 rounded-2xl bg-dark-800 border border-gray-800">
+        <h3 class="text-white font-semibold mb-3">{{ t('about.download_cv') }}</h3>
+        <p class="text-sm text-gray-400 mb-4">{{ t('about.cv_desc') }}</p>
+        <button onclick="openCvModal()" class="w-full px-4 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-sm font-medium transition-all text-center block">
+          {{ t('about.view_cv') }}
+        </button>
+      </div>
+
+      <!-- Skills -->
+      <div class="p-6 rounded-2xl bg-dark-800 border border-gray-800">
+        <h3 class="text-white font-semibold mb-4">{{ t('about.core_skills') }}</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-300">{{ t('about.skill_python') }}</span><span class="text-gray-500">95%</span></div>
+            <div class="h-2 bg-gray-700 rounded-full overflow-hidden"><div class="h-full w-[95%] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-300">{{ t('about.skill_ml') }}</span><span class="text-gray-500">88%</span></div>
+            <div class="h-2 bg-gray-700 rounded-full overflow-hidden"><div class="h-full w-[88%] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-300">{{ t('about.skill_rag') }}</span><span class="text-gray-500">85%</span></div>
+            <div class="h-2 bg-gray-700 rounded-full overflow-hidden"><div class="h-full w-[85%] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-300">{{ t('about.skill_fastapi') }}</span><span class="text-gray-500">90%</span></div>
+            <div class="h-2 bg-gray-700 rounded-full overflow-hidden"><div class="h-full w-[90%] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-300">{{ t('about.skill_postgres') }}</span><span class="text-gray-500">82%</span></div>
+            <div class="h-2 bg-gray-700 rounded-full overflow-hidden"><div class="h-full w-[82%] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

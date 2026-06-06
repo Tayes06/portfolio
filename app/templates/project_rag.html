@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}{{ t('rag.title') }} — {{ t('projects.title') }}{% endblock %}
+{% block content %}
+<div class="max-w-5xl">
+  <a href="/projects" class="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-6 transition-colors">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    {{ t('project.back') }}
+  </a>
+
+  <h1 class="text-4xl font-bold text-white mb-2">{{ t('rag.title') }}</h1>
+  <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-6"></div>
+
+  <div class="grid lg:grid-cols-5 gap-8">
+    <!-- Info -->
+    <div class="lg:col-span-3 space-y-6">
+      <div>
+        <h2 class="text-xl font-semibold text-white mb-3">{{ t('rag.overview_title') }}</h2>
+        <p class="text-gray-400 leading-relaxed">
+          {{ t('rag.overview') }}
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">{{ t('rag.architecture') }}</h3>
+        <div class="bg-dark-800 border border-gray-800 rounded-xl p-6 space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 text-xs font-bold">1</div>
+            <div><p class="text-white text-sm font-medium">{{ t('rag.step1') }}</p><p class="text-gray-500 text-xs">{{ t('rag.step1_desc') }}</p></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 text-xs font-bold">2</div>
+            <div><p class="text-white text-sm font-medium">{{ t('rag.step2') }}</p><p class="text-gray-500 text-xs">{{ t('rag.step2_desc') }}</p></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 text-xs font-bold">3</div>
+            <div><p class="text-white text-sm font-medium">{{ t('rag.step3') }}</p><p class="text-gray-500 text-xs">{{ t('rag.step3_desc') }}</p></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-xs font-bold">4</div>
+            <div><p class="text-white text-sm font-medium">{{ t('rag.step4') }}</p><p class="text-gray-500 text-xs">{{ t('rag.step4_desc') }}</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">{{ t('rag.tech_stack') }}</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-blue-500/10 text-blue-300 border border-blue-500/20">Python</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-purple-500/10 text-purple-300 border border-purple-500/20">sentence-transformers</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-green-500/10 text-green-300 border border-green-500/20">ChromaDB</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-yellow-500/10 text-yellow-300 border border-yellow-500/20">Ollama / OpenAI</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">FastAPI</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">{{ t('rag.features') }}</h3>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('rag.feature1') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('rag.feature2') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('rag.feature3') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('rag.feature4') }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="lg:col-span-2">
+      <div class="sticky top-6">
+        <div class="bg-dark-800 border border-gray-800 rounded-2xl overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-800 flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="text-white font-medium text-sm">{{ t('rag.chat_title') }}</span>
+            <span class="text-xs text-gray-500">{{ t('rag.chat_badge') }}</span>
+          </div>
+          <div id="chat-messages" class="h-96 overflow-y-auto p-4 space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 text-xs text-white font-bold">AI</div>
+              <div class="bg-dark-700 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%]">
+                <p class="text-sm text-gray-200">{{ t('rag.chat_greeting') }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 border-t border-gray-800">
+            <form id="chat-form" class="flex gap-2">
+              <input type="text" id="chat-input" placeholder="{{ t('rag.chat_placeholder') }}" class="flex-1 px-4 py-2.5 rounded-xl bg-dark-700 border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors">
+              <button type="submit" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19V5m0 0l-7 7m7-7l7 7"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('chat-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if (!message) return;
+
+  const messages = document.getElementById('chat-messages');
+
+  // User message
+  const userDiv = document.createElement('div');
+  userDiv.className = 'flex items-start gap-3 justify-end';
+  userDiv.innerHTML = `<div class="bg-blue-600 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[85%]"><p class="text-sm text-white">${message}</p></div><div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center shrink-0 text-xs text-white font-bold">U</div>`;
+  messages.appendChild(userDiv);
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+
+  // Loading
+  const loadDiv = document.createElement('div');
+  loadDiv.className = 'flex items-start gap-3';
+  loadDiv.id = 'loading-msg';
+  loadDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 text-xs text-white font-bold">AI</div><div class="bg-dark-700 rounded-2xl rounded-tl-sm px-4 py-2.5"><p class="text-sm text-gray-400">{{ t('rag.chat_thinking') }}</p></div>`;
+  messages.appendChild(loadDiv);
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const res = await fetch('/api/rag/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    });
+    const data = await res.json();
+    document.getElementById('loading-msg')?.remove();
+
+    const aiDiv = document.createElement('div');
+    aiDiv.className = 'flex items-start gap-3';
+    let sources = '';
+    if (data.sources && data.sources.length > 0) {
+      sources = '<div class="mt-2 pt-2 border-t border-gray-700"><p class="text-xs text-gray-500 mb-1">{{ t('rag.sources') }}</p>' +
+        data.sources.map(s => `<span class="text-xs text-blue-400 block">${s.title}</span>`).join('') + '</div>';
+    }
+    aiDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 text-xs text-white font-bold">AI</div><div class="bg-dark-700 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%]"><p class="text-sm text-gray-200">${data.response}</p>${sources}</div>`;
+    messages.appendChild(aiDiv);
+  } catch (err) {
+    document.getElementById('loading-msg')?.remove();
+    const errDiv = document.createElement('div');
+    errDiv.className = 'flex items-start gap-3';
+    errDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center shrink-0 text-xs text-white font-bold">!</div><div class="bg-dark-700 rounded-2xl rounded-tl-sm px-4 py-2.5"><p class="text-sm text-red-400">{{ t('rag.chat_error') }}</p></div>`;
+    messages.appendChild(errDiv);
+  }
+  messages.scrollTop = messages.scrollHeight;
+});
+</script>
+{% endblock %}

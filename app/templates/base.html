@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ t('site.title') }}{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a', 950: '#020617' },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'dark';
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body class="min-h-screen">
+  {% include "components/sidebar.html" %}
+
+  <!-- Overlay for mobile -->
+  <div id="sidebar-overlay" class="fixed inset-0 z-30 bg-black/50 hidden sm:hidden"></div>
+
+  <!-- Main content -->
+  <main id="main-content" class="sm:ml-72 min-h-screen p-6 md:p-10 lg:p-12 transition-all">
+    {% include "components/cv_modal.html" %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <script>window.__lang = '{{ current_lang }}';</script>
+  <script src="/static/js/main.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.db
+*.log
+.env
+app/static/uploads/cv/*
+!app/static/uploads/cv/.gitkeep
+.DS_Store

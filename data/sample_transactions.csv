@@ -1,0 +1,16 @@
+amount,merchant,category,hour,day_of_week,distance_from_home,is_anomaly
+35.50,Amazon,Shopping,14,3,2.1,False
+4200.00,Unknown,Transfer,3,6,850.0,True
+12.99,Netflix,Entertainment,20,1,0.0,False
+89.40,Walmart,Groceries,11,0,3.5,False
+15000.00,CryptoExchange,Investment,1,5,1200.0,True
+65.00,Uber,Transport,22,4,8.0,False
+250.00,BestBuy,Electronics,15,2,5.0,False
+9800.00,ForeignBank,Wire Transfer,4,7,3200.0,True
+7.50,Starbucks,Food,8,1,1.2,False
+550.00,Macy's,Shopping,13,0,4.0,False
+22300.00,OffshoreAccount,Transfer,2,6,5000.0,True
+45.00,Shell,Gas,17,2,2.5,False
+175.00,DeltaAir,Travel,9,4,45.0,False
+6200.00,UnknownATM,Withdrawal,23,5,680.0,True
+28.50,Dominos,Food,19,6,0.8,False

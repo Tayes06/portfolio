@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}{{ t('n8n.title') }} — {{ t('projects.title') }}{% endblock %}
+{% block content %}
+<div class="max-w-5xl">
+  <a href="/projects" class="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-6 transition-colors">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    {{ t('project.back') }}
+  </a>
+
+  <h1 class="text-4xl font-bold text-white mb-2">{{ t('n8n.title') }}</h1>
+  <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-6"></div>
+
+  <div class="grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 space-y-6">
+      <div>
+        <h2 class="text-xl font-semibold text-white mb-3">{{ t('n8n.overview_title') }}</h2>
+        <p class="text-gray-400 leading-relaxed">
+          {{ t('n8n.overview') }}
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">{{ t('n8n.architecture') }}</h3>
+        <div class="relative">
+          <div class="space-y-0">
+            {% set steps = [
+              (t('n8n.step1'), "message-circle", "green", t('n8n.step1_desc')),
+              (t('n8n.step2'), "filter", "blue", t('n8n.step2_desc')),
+              (t('n8n.step3'), "brain", "purple", t('n8n.step3_desc')),
+              (t('n8n.step4'), "database", "yellow", t('n8n.step4_desc')),
+              (t('n8n.step5'), "bot", "indigo", t('n8n.step5_desc')),
+              (t('n8n.step6'), "reply", "green", t('n8n.step6_desc')),
+            ] %}
+            {% for step_name, icon, color, desc in steps %}
+            <div class="flex items-start gap-4 pb-0 relative">
+              <div class="flex flex-col items-center">
+                <div class="w-10 h-10 rounded-xl bg-{{ color }}-500/10 border border-{{ color }}-500/20 flex items-center justify-center z-10">
+                  <svg class="w-5 h-5 text-{{ color }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {% if icon == "message-circle" %}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    {% elif icon == "filter" %}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                    {% elif icon == "brain" %}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    {% elif icon == "database" %}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                    {% elif icon == "bot" %}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    {% elif icon == "reply" %}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+                    {% endif %}
+                  </svg>
+                </div>
+                {% if not loop.last %}<div class="w-0.5 h-8 bg-gray-700 -mt-1 z-0"></div>{% endif %}
+              </div>
+              <div class="pb-6">
+                <h4 class="text-white font-medium">{{ step_name }}</h4>
+                <p class="text-sm text-gray-500 mt-0.5">{{ desc }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="space-y-6">
+      <div class="bg-dark-800 border border-gray-800 rounded-2xl p-6">
+        <h3 class="text-white font-semibold mb-4">{{ t('n8n.tech_stack') }}</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-green-500/10 text-green-300 border border-green-500/20">n8n</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-blue-500/10 text-blue-300 border border-blue-500/20">OpenAI API</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-purple-500/10 text-purple-300 border border-purple-500/20">WhatsApp API</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-yellow-500/10 text-yellow-300 border border-yellow-500/20">Webhooks</span>
+          <span class="px-3 py-1.5 text-sm rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">RAG</span>
+        </div>
+      </div>
+
+      <div class="bg-dark-800 border border-gray-800 rounded-2xl p-6">
+        <h3 class="text-white font-semibold mb-4">{{ t('n8n.features') }}</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('n8n.feature1') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('n8n.feature2') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('n8n.feature3') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('n8n.feature4') }}</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>{{ t('n8n.feature5') }}</li>
+        </ul>
+      </div>
+
+      <div class="bg-dark-800 border border-gray-800 rounded-2xl p-6">
+        <h3 class="text-white font-semibold mb-4">{{ t('n8n.config') }}</h3>
+        <div class="text-sm text-gray-400 space-y-3">
+          <p>{{ t('n8n.config_desc') }}</p>
+          <ol class="list-decimal list-inside space-y-1 text-gray-500">
+            <li>{{ t('n8n.config_step1') }}</li>
+            <li>{{ t('n8n.config_step2') }}</li>
+            <li>{{ t('n8n.config_step3') }}</li>
+            <li>{{ t('n8n.config_step4') }}</li>
+            <li>{{ t('n8n.config_step5') }}</li>
+          </ol>
+          <a href="#" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 mt-2 text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            {{ t('n8n.download') }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
