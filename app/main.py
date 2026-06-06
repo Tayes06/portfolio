@@ -30,7 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-templates = Jinja2Templates(directory=str(BASE_DIR / "templates"), cache_size=0)
+templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 
 def render(name: str, request: Request, context: dict | None = None):
