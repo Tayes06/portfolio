@@ -33,22 +33,24 @@ app.add_middleware(
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 
-def i18n_context(request: Request):
+def render(name: str, request: Request, context: dict | None = None):
     lang = request.cookies.get("lang", "en")
     translator = Translator(lang)
-    return {
+    ctx = {
+        "request": request,
         "t": translator.t,
         "current_lang": lang,
         "available_languages": AVAILABLE_LANGUAGES,
     }
+    if context:
+        ctx.update(context)
+    return templates.TemplateResponse(name, ctx)
 
 
-templates.context_processors.append(i18n_context)
-
-# Share the configured templates with route modules
-pages.templates = templates
+# Share the configured templates and render helper with route modules
+pages.render = render
 import app.routes.pages as pages_module
-pages_module.templates = templates
+pages_module.render = render
 
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 

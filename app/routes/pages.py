@@ -12,39 +12,39 @@ router = APIRouter(tags=["pages"])
 
 @router.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return render("index.html", request)
 
 
 @router.get("/about", response_class=HTMLResponse)
 async def about(request: Request, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(CV).where(CV.is_active == True).order_by(CV.uploaded_at.desc()).limit(1))
     cv_record = result.scalar_one_or_none()
-    return templates.TemplateResponse("about.html", {"request": request, "cv": cv_record})
+    return render("about.html", request, {"cv": cv_record})
 
 
 @router.get("/projects", response_class=HTMLResponse)
 async def projects(request: Request):
-    return templates.TemplateResponse("projects.html", {"request": request})
+    return render("projects.html", request)
 
 
 @router.get("/projects/rag", response_class=HTMLResponse)
 async def project_rag(request: Request):
-    return templates.TemplateResponse("project_rag.html", {"request": request})
+    return render("project_rag.html", request)
 
 
 @router.get("/projects/anomaly-detection", response_class=HTMLResponse)
 async def project_anomaly(request: Request):
-    return templates.TemplateResponse("project_anomaly.html", {"request": request})
+    return render("project_anomaly.html", request)
 
 
 @router.get("/projects/n8n-workflow", response_class=HTMLResponse)
 async def project_n8n(request: Request):
-    return templates.TemplateResponse("project_n8n.html", {"request": request})
+    return render("project_n8n.html", request)
 
 
 @router.get("/contact", response_class=HTMLResponse)
 async def contact_page(request: Request):
-    return templates.TemplateResponse("contact.html", {"request": request})
+    return render("contact.html", request)
 
 
 @router.post("/contact")
