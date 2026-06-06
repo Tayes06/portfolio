@@ -1,3 +1,4 @@
+import asyncio
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
@@ -15,7 +16,16 @@ BASE_DIR = Path(__file__).resolve().parent
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await init_db()
+    for attempt in range(5):
+        try:
+            await init_db()
+            break
+        except Exception as e:
+            if attempt == 4:
+                print(f"Database init failed after 5 attempts: {e}")
+                raise
+            print(f"Waiting for database (attempt {attempt + 1}): {e}")
+            await asyncio.sleep(2 ** attempt)
     yield
     await engine.dispose()
 
